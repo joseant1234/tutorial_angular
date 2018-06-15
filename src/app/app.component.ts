@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  userSubscribed(event){
+    console.log('El usuario se suscribió');
+    console.log(event)
+  }
 }

@@ -1,3 +1,5 @@
 <div class="light">
-  <app-user-card></app-user-card>
+  <!-- el padre tiene q escuchar el evento, usando la sintaxis de HTML de eventos -->
+  <!-- se puede usar la variable $event para acceder a la informacio acerca del evento -->
+  <app-user-card (subscribed)="userSubscribed($event)"></app-user-card>
 </div>

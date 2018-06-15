@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-card',
@@ -11,12 +11,18 @@ export class UserCardComponent implements OnInit {
   public username : string;
   public avatar : string
 
+  // subscribed es una instancia de eventEmitter
+  @Output() subscribed = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
-    this.name = "Hola";
     this.username = "jaja";
-    this.avatar = "https://cdn-images-1.medium.com/max/705/1*7GZIq-Pg4VsrgWObJVi0SQ.png"
+    this.name = "Hola";
+    this.avatar = "https://cdn-images-1.medium.com/max/705/1*7GZIq-Pg4VsrgWObJVi0SQ.png";
+
+    // emit dispara el evento personalizado, lo q se pasa como argumento es un valor q corresponda al tipo decladoro , este caso boolean
+    setTimeout(()=> this.subscribed.emit(true),300)
   }
 
   changing(event: any){
