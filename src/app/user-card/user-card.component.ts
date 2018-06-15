@@ -19,4 +19,10 @@ export class UserCardComponent implements OnInit {
     this.avatar = "https://cdn-images-1.medium.com/max/705/1*7GZIq-Pg4VsrgWObJVi0SQ.png"
   }
 
+  changing(event: any){
+    // con event se obtiene toda la informacion q viene con el evento
+    this.username = event.target.value;
+
+  }
+
 }
