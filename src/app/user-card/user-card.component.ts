@@ -22,7 +22,7 @@ export class UserCardComponent implements OnInit {
     this.avatar = "https://cdn-images-1.medium.com/max/705/1*7GZIq-Pg4VsrgWObJVi0SQ.png";
 
     // emit dispara el evento personalizado, lo q se pasa como argumento es un valor q corresponda al tipo decladoro , este caso boolean
-    setTimeout(()=> this.subscribed.emit(true),300)
+    setTimeout(()=> this.subscribed.emit(true),3000)
   }
 
   changing(event: any){
