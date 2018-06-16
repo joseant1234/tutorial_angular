@@ -1,6 +1,6 @@
 <h1>Angular</h1>
 
-<p *ngIf="!isAvailable; else available">Curso en desarrollo</p>
+<p *ngIf="!isAvailable; else available">Curso en desarrollo. Lanzamiento {{launchDate | date:"dd/MMM/yy h:mm:ss":"0000" | uppercase}}</p>
 <ng-template #available>
   <span class="highlight">Curso listo</span>
 </ng-template>
@@ -27,6 +27,6 @@
 
 <div>
   <button [disabled]="!isAvailable || !subscribed" [ngClass]="{active: isAvailable && subscribed, shadow: !isAvailable}" type="button" name="button">
-    Inscribir
+    Inscribir {{price | currency:"S/."}}
   </button>
 </div>

@@ -10,9 +10,11 @@ export class TitleComponent implements OnInit{
 
   public name : string;
   public moreInformation : boolean = false;
-  public isAvailable : boolean = true;
+  public isAvailable : boolean = false;
   public category : string;
   public topics : string[];
+  public launchDate : Date;
+  public price : number = 25;
 
   @Input() subscribed : boolean;
 
@@ -30,5 +32,10 @@ export class TitleComponent implements OnInit{
       'RxJS',
       'Binding'
     ];
+    this.launchDate = new Date(2018,11,27);
+  }
+
+  toggleMoreInformation(){
+    this.moreInformation = !this.moreInformation;
   }
 }

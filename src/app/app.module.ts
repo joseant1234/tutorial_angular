@@ -14,7 +14,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     UserCardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
     FormsModule,
   ],
   providers: [],
