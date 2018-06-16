@@ -8,6 +8,7 @@ import { TitleComponent } from './title/title.component';
 import { UserCardComponent } from './user-card/user-card.component';
 
 import { SecondsToTimeFormat } from './pipes/SecondsToTimeFormat.pipe';
+import { RedBorder } from './directives/RedBorder.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SecondsToTimeFormat } from './pipes/SecondsToTimeFormat.pipe';
     TitleComponent,
     UserCardComponent,
     SecondsToTimeFormat,
+    RedBorder,
   ],
   imports: [
     BrowserModule,

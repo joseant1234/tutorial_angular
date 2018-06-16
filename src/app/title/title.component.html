@@ -12,7 +12,11 @@
   <span *ngSwitchDefault>No especificado</span>
 </div>
 
-<h3>Usuario: {{name}}</h3>
+<!-- si no usa binding no se usa []  -->
+<!-- <h3 redBorder>Usuario: {{name}}</h3> -->
+<!-- se usa binding para enviar un input attribute a la directiva -->
+<!-- sobre la misma directiva se le envio otro parametro llamado redClass -->
+<h3 [redBorder]="'blue'" [redClass]="'pink-border'">Usuario: {{name}}</h3>
 
 <div>
   <a (click)="toggleMoreInformation()">Mas información <i class="fa " [ngClass]="{'fa-chevron-circle-down': !moreInformation, 'fa-chevron-circle-up': moreInformation}"></i></a>
