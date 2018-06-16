@@ -7,11 +7,14 @@ import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
 import { UserCardComponent } from './user-card/user-card.component';
 
+import { SecondsToTimeFormat } from './pipes/SecondsToTimeFormat.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     TitleComponent,
-    UserCardComponent
+    UserCardComponent,
+    SecondsToTimeFormat,
   ],
   imports: [
     BrowserModule,

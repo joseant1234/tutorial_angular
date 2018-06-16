@@ -9,12 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TitleComponent implements OnInit{
 
   public name : string;
-  public moreInformation : boolean = false;
+  public moreInformation : boolean = true;
   public isAvailable : boolean = false;
   public category : string;
   public topics : string[];
   public launchDate : Date;
   public price : number = 25;
+  public seconds : number = 11640;
 
   @Input() subscribed : boolean;
 

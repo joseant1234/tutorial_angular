@@ -17,6 +17,7 @@
 <div>
   <a (click)="toggleMoreInformation()">Mas información <i class="fa " [ngClass]="{'fa-chevron-circle-down': !moreInformation, 'fa-chevron-circle-up': moreInformation}"></i></a>
   <p *ngIf="moreInformation">
+    <span style="display: block; font-weight: bold;">{{seconds | secondsToTimeFormat: true }}</span>
     Tutorial de angular
   </p>
 </div>
