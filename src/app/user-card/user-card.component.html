@@ -1,9 +1,17 @@
 <div class="container">
   <img [src]="avatar" alt="Avatar de usuario">
   <p class="username">{{username}}</p>
+  <!-- <p class="name">{{name}}</p> -->
+
+  <!-- <p class="name">{{nameInput.value}}</p> -->
+
   <p class="name">{{name}}</p>
 
   <!-- la variable $event carga toda la informacion relacionado al evento -->
   <input type="text" (change)="changing($event)" value="{{username}}">
-  <input type="text" (change)="name = $event.target.value" value="{{name}}">
+  <!-- <input type="text" (change)="name = $event.target.value" value="{{name}}"> -->
+
+  <!-- <input type="text" value="{{name}}" #nameInput > -->
+
+  <input type="text" [(ngModel)]="name">
 </div>

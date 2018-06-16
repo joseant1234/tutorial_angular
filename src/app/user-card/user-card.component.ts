@@ -17,12 +17,13 @@ export class UserCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.username = "jaja";
-    this.name = "Hola";
+    this.username = "es un username";
+    this.name = "es un nombre";
     this.avatar = "https://cdn-images-1.medium.com/max/705/1*7GZIq-Pg4VsrgWObJVi0SQ.png";
 
     // emit dispara el evento personalizado, lo q se pasa como argumento es un valor q corresponda al tipo decladoro , este caso boolean
     setTimeout(()=> this.subscribed.emit(true),3000)
+    setTimeout(() => this.name = "nombre modificado desde el componente", 3000)
   }
 
   changing(event: any){

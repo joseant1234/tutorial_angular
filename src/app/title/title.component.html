@@ -1,0 +1,32 @@
+<h1>Angular</h1>
+
+<p *ngIf="!isAvailable; else available">Curso en desarrollo</p>
+<ng-template #available>
+  <span class="highlight">Curso listo</span>
+</ng-template>
+
+<div class="category" [ngSwitch]='category'>
+  <span *ngSwitchCase="'web'">Desarrollo web</span>
+  <span *ngSwitchCase="'mobile'">Desarrollo movil</span>
+  <span *ngSwitchCase="'other'">Desarrollo General</span>
+  <span *ngSwitchDefault>No especificado</span>
+</div>
+
+<h3>Usuario: {{name}}</h3>
+
+<div>
+  <a (click)="toggleMoreInformation()">Mas información <i class="fa " [ngClass]="{'fa-chevron-circle-down': !moreInformation, 'fa-chevron-circle-up': moreInformation}"></i></a>
+  <p *ngIf="moreInformation">
+    Tutorial de angular
+  </p>
+</div>
+
+<ul>
+  <li *ngFor="let topic of topics; index as posicion">{{posicion + 1 }} - {{topic}}</li>
+</ul>
+
+<div>
+  <button [disabled]="!isAvailable || !subscribed" [ngClass]="{active: isAvailable && subscribed, shadow: !isAvailable}" type="button" name="button">
+    Inscribir
+  </button>
+</div>

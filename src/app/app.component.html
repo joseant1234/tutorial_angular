@@ -1,5 +1,7 @@
 <div class="light">
+  <!-- desde el padre se envia una propiedad -->
+  <app-title [subscribed]="userSubscribed"></app-title>
   <!-- el padre tiene q escuchar el evento, usando la sintaxis de HTML de eventos -->
   <!-- se puede usar la variable $event para acceder a la informacio acerca del evento -->
-  <app-user-card (subscribed)="userSubscribed($event)"></app-user-card>
+  <app-user-card (subscribed)="subscriptionChanged($event)"></app-user-card>
 </div>
