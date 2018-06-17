@@ -4,6 +4,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+// angular 5
+// import 'rxjs/add/operator/map';
+// angular 6
+import { map } from 'rxjs/operators';
+
+// convertir todos los datos q viene del servicio a solo el id y el nombre
+interface Repo{
+  id: string,
+  name: string
+}
+
+class Repo{
+  constructor(public id : string, public name :string){
+
+  }
+}
+
 // agrega metadata
 @Injectable()
 export class ArticlesService{
@@ -14,6 +31,8 @@ export class ArticlesService{
 
   public articlesCount : number = 0 ;
 
+  // se va tener un observable q va a estar enviando arreglos de objetos q le pertenecen a la clase REPO
+  public reposObserver : Observable<Repo[]>;
 
   // en el constructor se inyecta la dependencia de HTTP
   // con esta clase se debe instanciar un objeto para q el inyector de dependencias deliver una instancia de ese servicio q es de angular para hacer consultas
@@ -24,9 +43,20 @@ export class ArticlesService{
   getAll(){
     // lo q hace el metodo get es return un observador
     // para obtener los datos se debe suscribir. Para este caso solo se recibe una vez la informacion cuando la peticion se realiza
-    this.http.get('https://api.github.com/users/joseant1234/repos').subscribe(data => {
-      console.log(data);
-    });
+    // el operador map trae los mismos datos q se le enviaron al inicio al subscribe
+    this.reposObserver = this.http.get('https://api.github.com/users/joseant1234/repos')
+    .pipe(map((data : Object[]) => {
+      // return la primer objecto del array
+      // return data[0]
+      // return el primero objecto del array de la clase repo
+      // return new Repo(data[0].id,data[0].name)
+      // return todo el array, cada elemento es de la clase repo
+      // el map de data.map no es el mismo del operador map del observable
+      return data.map((r : any) => new Repo(r.id,r.name))
+    }));
+    // .subscribe(data => {
+    //   console.log(data);
+    // });
   }
 
   // Observable es de tipo generico, se debe especificar el tipo <> de los datos q debe enviar el observable hacia los observadores

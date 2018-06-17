@@ -1,5 +1,12 @@
 <h3>Repositorios: {{articleS.articlesCount}}</h3>
 
-<p>
-  articles works!
-</p>
+<!-- el pipe async lo q hace es suscribirse a un observable o a una promesa y return el ultimo valor q emitan esas estructuras -->
+<!-- lo q hace el pipe async sobre la estructura observable es suscribirse y cuando venga un valor imprmirlo o return como resultado de la transformacion -->
+{{articleS.reposObserver | async | json}}
+
+<ul>
+  <!--articleS.reposObserve no es un arreglo q se pueda iterar, es sino un observable q quisas return un arreglo  -->
+  <!-- con el pipe async ya se puede iterar informacion o una estructura q se va evaluar de manera asincrona -->
+  <!-- con esto se evita escribir el codigo de manera directa para suscribirse, solo se usa el pipe async para q lo ultimo q emita el observable se transforme en el valor de la expresion  -->
+  <li *ngFor="let repo of articleS.reposObserver | async">{{repo.name}}</li>
+</ul>
