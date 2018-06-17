@@ -17,7 +17,7 @@ export class SecondsToTimeFormat implements PipeTransform{
     const minutes = Math.floor(seconds % 3600 / 60);
 
     // para la interpolacion en ts se debe usar operador backtick ``
-    if !showMinutes return `${hours}`;
+    if(!showMinutes) return `${hours}`;
     return `${hours} hrs ${minutes}min`;
   }
 }
