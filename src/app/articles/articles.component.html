@@ -4,6 +4,15 @@
 <!-- lo q hace el pipe async sobre la estructura observable es suscribirse y cuando venga un valor imprmirlo o return como resultado de la transformacion -->
 {{articleS.reposObserver | async | json}}
 
+
+<div>
+  <!-- agrega operador de navegacion segura o safe navigation operator u operador existencial (?) q permite acceder atributos o metodos si es q el objeto es no null -->
+  <!-- objeto q se esta asignando de manera asincrona sobre el cual se va a ejeuctar metodos o propiedades, por lo general un objeto q se obtiene de manera asincorna inicia con valor null y luego se coloca un valor -->
+  <!-- valida q el objeto no sea null para luego acceder a la prop o ejecutar un metodo -->
+  <!-- se puede usar con *ngIf="articleS.mainRepo?.name == 'nombreRepo'" -->
+  <p style="font-weight: bold; font-size: 1.3em;">Repo principal: {{articleS.mainRepo?.name}}</p>
+</div>
+
 <ul>
   <!--articleS.reposObserve no es un arreglo q se pueda iterar, es sino un observable q quisas return un arreglo  -->
   <!-- con el pipe async ya se puede iterar informacion o una estructura q se va evaluar de manera asincrona -->

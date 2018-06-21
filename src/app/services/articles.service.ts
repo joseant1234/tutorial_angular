@@ -34,9 +34,13 @@ export class ArticlesService{
   // se va tener un observable q va a estar enviando arreglos de objetos q le pertenecen a la clase REPO
   public reposObserver : Observable<Repo[]>;
 
+  public mainRepo : Repo;
+
   // en el constructor se inyecta la dependencia de HTTP
   // con esta clase se debe instanciar un objeto para q el inyector de dependencias deliver una instancia de ese servicio q es de angular para hacer consultas
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient){
+    this.getMainRepo();
+  }
 
   // el trabajo del servicio es manejar los datos
   // el trabajo del componente es mostrar los datos y permitir q el usuario interactue con ellos
@@ -64,6 +68,17 @@ export class ArticlesService{
     let number = 0;
     return Observable.create(function(observer){
       setInterval(()=> observer.next(number++),1000)
+    })
+  }
+
+  getMainRepo(){
+    // fetch return un objecto de la clase Response
+    // del objecto q vino se ejecuta el metodo json, y este return otra promesa
+    fetch('https://api.github.com/users/joseant1234/repos')
+    .then(response => response.json())
+    .then(repos =>{
+      const JSONRepo = repos[repos.length - 1 ];
+      this.mainRepo = new Repo(JSONRepo.id,JSONRepo.name);
     })
   }
 }
