@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 // angular 5
 // import 'rxjs/add/operator/map';
 // angular 6
-import { map } from 'rxjs/operators';
+import { map, share } from 'rxjs/operators';
 
 // convertir todos los datos q viene del servicio a solo el id y el nombre
 interface Repo{
@@ -48,6 +48,7 @@ export class ArticlesService{
     // lo q hace el metodo get es return un observador
     // para obtener los datos se debe suscribir. Para este caso solo se recibe una vez la informacion cuando la peticion se realiza
     // el operador map trae los mismos datos q se le enviaron al inicio al subscribe
+    // el operador share es q no se cree mas de una suscripcion para el mismo observable, y asi las suscripciones no se duplican
     this.reposObserver = this.http.get('https://api.github.com/users/joseant1234/repos')
     .pipe(map((data : Object[]) => {
       // return la primer objecto del array
@@ -57,7 +58,7 @@ export class ArticlesService{
       // return todo el array, cada elemento es de la clase repo
       // el map de data.map no es el mismo del operador map del observable
       return data.map((r : any) => new Repo(r.id,r.name))
-    }));
+    }),share())
     // .subscribe(data => {
     //   console.log(data);
     // });
