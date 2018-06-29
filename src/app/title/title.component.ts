@@ -10,7 +10,7 @@ export class TitleComponent implements OnInit{
 
   public name : string;
   public moreInformation : boolean = true;
-  public isAvailable : boolean = false;
+  public isAvailable : boolean = true;
   public category : string;
   public topics : string[];
   public launchDate : Date;

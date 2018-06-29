@@ -5,6 +5,8 @@
   <span class="highlight">Curso listo</span>
 </ng-template>
 
+<!-- directiva ngswitch con la opcion a evaluar-->
+<!-- directiva ngSwtichCase es el valor a comparar definnido en ngSwitch -->
 <div class="category" [ngSwitch]='category'>
   <span *ngSwitchCase="'web'">Desarrollo web</span>
   <span *ngSwitchCase="'mobile'">Desarrollo movil</span>
@@ -22,7 +24,7 @@
   <a (click)="toggleMoreInformation()">Mas información <i class="fa " [ngClass]="{'fa-chevron-circle-down': !moreInformation, 'fa-chevron-circle-up': moreInformation}"></i></a>
   <p *ngIf="moreInformation">
     <span style="display: block; font-weight: bold;">{{seconds | secondsToTimeFormat: true }}</span>
-    Tutorial de angular
+    Tutorial de angular, este un ejemplo de un boton toggle, para mostrar u ocultar informacion al hacer click en el boton
   </p>
 </div>
 
