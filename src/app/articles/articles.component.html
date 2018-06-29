@@ -18,7 +18,9 @@
   <p style="font-weight: bold; font-size: 1.3em;">Repo principal: {{articleS.mainRepo?.name}}</p>
 </div>
 
-<ul>
+<!-- si evalua true se agrega la clase show  -->
+<!-- si evalue alse remove la calse show -->
+<ul [class.show]="(articleS.reposObserve | async)?.length > 0">
   <!--articleS.reposObserve no es un arreglo q se pueda iterar, es sino un observable q quisas return un arreglo  -->
   <!-- con el pipe async ya se puede iterar informacion o una estructura q se va evaluar de manera asincrona -->
   <!-- con esto se evita escribir el codigo de manera directa para suscribirse, solo se usa el pipe async para q lo ultimo q emita el observable se transforme en el valor de la expresion  -->
