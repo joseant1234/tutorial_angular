@@ -9,6 +9,10 @@ import { trigger, style, transition, animate, state } from '@angular/animations'
 // en el segundo argumento de state se especifica los estilos q son del estado, las prop css q se van asignar al componente cuando este en ese estado
 // ademas de los estados en el arreglo de configuracion q se envia a trigger, se debe especificar las transiciones q requiren una animacion y la manera en la q se van a ejecutar dichas animaciones
 // para pasar del estado '0' al estado '1', se decide q la animacion dure 0.4s con una funcion de ease-out
+// los valores especificados en style son los valores finales q se le asignaran al elemento al cual se halla especificado el trigger de la animacion, lueego q halla sucedido el cambio a dicho estado
+// se pueden definir estilos mientras la animacion sucede, pero no estaran en el elemento al final de la transicion
+// los estilos en animacion se colocan animate
+
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
@@ -21,7 +25,10 @@ import { trigger, style, transition, animate, state } from '@angular/animations'
       state('1', style({
         backgroundColor: 'red'
       })),
-      transition('0 => 1', animate('0.4s ease-out')),
+      transition('0 => 1', animate('0.4s ease-out', style({
+        transform: 'scale(1.3)',
+        border: 'solid 1px'
+      })),
       transition('1 => 0', animate('5s ease-out')),
     ])
   ]
