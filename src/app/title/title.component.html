@@ -20,7 +20,10 @@
 <!-- sobre la misma directiva se le envio otro parametro llamado redClass -->
 <h3 [redBorder]="'blue'" [redClass]="'pink-border'">Usuario: {{name}}</h3>
 
-<div>
+<!-- para enlazar la animacion con el template se debe poner el identificador del trigger se coloca [@identificadorTrigger] -->
+<!-- en "" del showUp se coloca la prop de la cual se va obtener el valor de cual estado se encuentra-->
+<!-- se ve una animacion entre estados -->
+<div [@showUp]="moreInformation">
   <a (click)="toggleMoreInformation()">Mas información <i class="fa " [ngClass]="{'fa-chevron-circle-down': !moreInformation, 'fa-chevron-circle-up': moreInformation}"></i></a>
   <p *ngIf="moreInformation">
     <span style="display: block; font-weight: bold;">{{seconds | secondsToTimeFormat: true }}</span>

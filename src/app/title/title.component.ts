@@ -1,9 +1,30 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { trigger, style, transition, animate, state } from '@angular/animations';
 
+
+// trigger se encarga de crear un disparador de una animacion en el cual se enlistaran los estados y transiciones q van a definir o especifcar la animacion
+// en trigger argumentos (nombreDisparador,[enlistar transiciones y estados en el q se encuentra componente])
+// lo q esta en state son los valores q va adoptar la variable boolean cuando sea transformado en un string
+// en el dsl de angular los estados son cadena, y como la prop es boolean se especifica "0" como falso y "1" como verdadero
+// en el segundo argumento de state se especifica los estilos q son del estado, las prop css q se van asignar al componente cuando este en ese estado
+// ademas de los estados en el arreglo de configuracion q se envia a trigger, se debe especificar las transiciones q requiren una animacion y la manera en la q se van a ejecutar dichas animaciones
+// para pasar del estado '0' al estado '1', se decide q la animacion dure 0.4s con una funcion de ease-out
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
-  styleUrls: ['./title.component.css']
+  styleUrls: ['./title.component.css'],
+  animations: [
+    trigger('showUp',[
+      state('0', style({
+        backgroundColor: 'blue'
+      })),
+      state('1', style({
+        backgroundColor: 'red'
+      })),
+      transition('0 => 1', animate('0.4s ease-out')),
+      transition('1 => 0', animate('5s ease-out')),
+    ])
+  ]
 })
 
 export class TitleComponent implements OnInit{
