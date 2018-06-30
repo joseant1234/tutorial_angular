@@ -23,9 +23,15 @@
 <!-- para enlazar la animacion con el template se debe poner el identificador del trigger se coloca [@identificadorTrigger] -->
 <!-- en "" del showUp se coloca la prop de la cual se va obtener el valor de cual estado se encuentra-->
 <!-- se ve una animacion entre estados -->
-<div [@showUp]="moreInformation">
+<div [@showUp]="moreInformation" style="overflow: hidden;">
   <a (click)="toggleMoreInformation()">Mas información <i class="fa " [ngClass]="{'fa-chevron-circle-down': !moreInformation, 'fa-chevron-circle-up': moreInformation}"></i></a>
-  <p *ngIf="moreInformation">
+  <!-- <p *ngIf="moreInformation">
+    <span style="display: block; font-weight: bold;">{{seconds | secondsToTimeFormat: true }}</span>
+    Tutorial de angular, este un ejemplo de un boton toggle, para mostrar u ocultar informacion al hacer click en el boton
+  </p> -->
+  <!-- se comento el ngIf, pues se va usar animacion para mostrar u ocultar, se agrego tambien overflow: hidden en el contenedor-->
+  <!-- si el contenido es mas grande q cierto tamaño, lo esconde -->
+  <p>
     <span style="display: block; font-weight: bold;">{{seconds | secondsToTimeFormat: true }}</span>
     Tutorial de angular, este un ejemplo de un boton toggle, para mostrar u ocultar informacion al hacer click en el boton
   </p>
