@@ -1,14 +1,14 @@
 <h3>Repositorios: {{articleS.articlesCount}}</h3>
 
-<!-- el pipe async lo q hace es suscribirse a un observable o a una promesa y return el ultimo valor q emitan esas estructuras -->
-<!-- lo q hace el pipe async sobre la estructura observable es suscribirse y cuando venga un valor imprmirlo o return como resultado de la transformacion -->
-{{articleS.reposObserver | async | json}}
-
 <!-- al usar 2 veces el pipe async sobre el mismo observador, el template se esta suscribiendo 2 veces al observador -->
 <!-- en aplicaciones en tiempo real, como las q se usan con firebase cuando se eliminen un elemento de la lista, puede traer un bug, porque angular esta intentando de sincronizar 2 observables en la misma vista.-->
 <!-- al llamar el pipe async se crea una nueva suscripcion, no importa q esta en la misma vista -->
 <!-- para evitar bugs se puede utilizar el operador share de RxJS en el servicio -->
 <p>{{(articleS.reposObserver | async)?.length}} repositorios</p>
+
+<!-- el pipe async lo q hace es suscribirse a un observable o a una promesa y return el ultimo valor q emitan esas estructuras -->
+<!-- lo q hace el pipe async sobre la estructura observable es suscribirse y cuando venga un valor imprmirlo o return como resultado de la transformacion -->
+<!-- {{articleS.reposObserver | async | json}} -->
 
 <div>
   <!-- agrega operador de navegacion segura o safe navigation operator u operador existencial (?) q permite acceder atributos o metodos si es q el objeto es no null -->
@@ -19,8 +19,11 @@
 </div>
 
 <!-- si evalua true se agrega la clase show  -->
-<!-- si evalue alse remove la calse show -->
-<ul [class.show]="(articleS.reposObserve | async)?.length > 0">
+<!-- si evalue alse remove la clase show -->
+<!-- <ul [class.show]="(articleS.reposObserve | async)?.length > 0"> -->
+<!-- a staggeredShowUp se pasa un disparador para ver cuando se debe de aplicar la animacion  -->
+<!-- se pone .length para q cada vez cambie la longitud del arreglo q hace return el observador vuelva a ejecutar la animacion  -->
+<ul [@staggeredShowUp]="(articleS.reposObserve | async)?.length">
   <!--articleS.reposObserve no es un arreglo q se pueda iterar, es sino un observable q quisas return un arreglo  -->
   <!-- con el pipe async ya se puede iterar informacion o una estructura q se va evaluar de manera asincrona -->
   <!-- con esto se evita escribir el codigo de manera directa para suscribirse, solo se usa el pipe async para q lo ultimo q emita el observable se transforme en el valor de la expresion  -->
