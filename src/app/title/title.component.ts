@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { trigger, style, transition, animate, state } from '@angular/animations';
+import { showUp } from '../animations/showUp.animation';
 
 
 // trigger se encarga de crear un disparador de una animacion en el cual se enlistaran los estados y transiciones q van a definir o especifcar la animacion
@@ -17,23 +17,7 @@ import { trigger, style, transition, animate, state } from '@angular/animations'
   selector: 'app-title',
   templateUrl: './title.component.html',
   styleUrls: ['./title.component.css'],
-  animations: [
-    trigger('showUp',[
-      state('0', style({
-        backgroundColor: 'blue',
-        maxHeight: '40px'
-      })),
-      state('1', style({
-        backgroundColor: 'red',
-        maxHeight: '500px'
-      })),
-      transition('0 => 1', animate('0.4s ease-out', style({
-        transform: 'scale(1.3)',
-        border: 'solid 1px'
-      }))),
-      transition('1 => 0', animate('0.4s ease-in'))
-    ])
-  ]
+  animations: [ showUp ]
 })
 
 export class TitleComponent implements OnInit{
